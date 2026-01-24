@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Aviation Hub</title>
+
+<style>
+:root {
+--bg: #070b16;
+--card: #0f162a;
+--accent: #6ea8ff;
+--text: #eaeaf0;
+--muted: #9aa4c7;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+background: var(--bg);
+color: var(--text);
+scroll-behavior: smooth;
+}
+
+/* ===== HERO ===== */
+.hero {
+min-height: 100svh;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+text-align: center;
+padding: 24px;
+background:
+linear-gradient(to top, rgba(7,11,22,0.95), rgba(7,11,22,0.4)),
+url("https://images.unsplash.com/photo-1504198458649-3128b932f49b");
+background-size: cover;
+background-position: center;
+}
+
+.hero h1 {
+font-size: clamp(2.4rem, 8vw, 3.8rem);
+letter-spacing: 0.12em;
+margin-bottom: 16px;
+animation: fadeUp 1s ease forwards;
+}
+
+.hero p {
+font-size: 1rem;
+color: var(--muted);
+max-width: 600px;
+margin: auto;
+line-height: 1.6;
+animation: fadeUp 1.2s ease forwards;
+}
+
+/* ===== SECTIONS ===== */
+section { padding: 60px 20px; }
+section h2 { font-size: 1.8rem; margin-bottom: 24px; letter-spacing: 0.08em; }
+
+/* ===== CARDS ===== */
+.cards { display: grid; gap: 18px; }
+.card {
+background: linear-gradient(145deg, #111a33, #0c1326);
+padding: 18px;
+border-radius: 16px;
+box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+transform: translateY(20px);
+opacity: 0;
+animation: fadeUp 0.8s ease forwards;
+}
+.card img {
+width: 100%;
+border-radius: 12px;
+margin-bottom: 12px;
+}
+.card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.2rem; }
+.card p { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+/* ===== NEWS ===== */
+.news-card {
+background: var(--card);
+padding: 16px;
+border-radius: 14px;
+margin-bottom: 16px;
+border-left: 3px solid var(--accent);
+animation: fadeUp 0.8s ease forwards;
+}
+.news-card a { color: var(--accent); font-weight: 600; text-decoration: none; display: block; margin-bottom: 6px; }
+.news-card p { color: var(--muted); font-size: 0.9rem; }
+
+/* ===== ABOUT ===== */
+.about {
+background: radial-gradient(circle at top, #111a33, #070b16);
+border-radius: 22px;
+padding: 32px;
+line-height: 1.6;
+}
+
+footer { text-align: center; padding: 32px 16px; color: #777; font-size: 0.85rem; }
+
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+section { padding: 90px 12%; }
+.cards { grid-template-columns: repeat(3,1fr); }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+from { opacity:0; transform:translateY(30px); }
+to { opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+<div>
+<h1>Aviation Hub</h1>
+<p>Explore the thrill of the skies — from commercial airliners to fighter jets, airports, and future flight.</p>
+</div>
+</div>
+
+<!-- CIVIL AVIATION -->
+<section>
+<h2>Civil Aviation</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1549924231-f129b911e442" alt="Commercial Aircraft">
+<h3>Commercial Jets</h3>
+<p>Airbus, Boeing, short-haul and ultra long-haul airliners connecting the world.</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523726491678-bf852e717f10" alt="Airline">
+<h3>Airlines</h3>
+<p>Fleet details, liveries, and airline innovations shaping global aviation.</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a" alt="Airport">
+<h3>Airports</h3>
+<p>Major hubs, runways, and terminal operations that keep the skies safe.</p>
+</div>
+</div>
+</section>
+
+<!-- FIGHTER JETS -->
+<section>
+<h2>Fighter Jets</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1605950457645-91c3d348d2cf" alt="F-22 Raptor">
+<h3>F-22 Raptor</h3>
+<p>Stealth and dominance in modern aerial combat, unmatched agility and power.</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1553524848-3f1e1de9603c" alt="F-16 Fighting Falcon">
+<h3>F-16 Fighting Falcon</h3>
+<p>Legendary multirole fighter used by dozens of nations worldwide.</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1580053543010-1a3c0b31e187" alt="Su-57">
+<h3>Su-57</h3>
+<p>Next-gen Russian stealth fighter combining speed, agility, and advanced tech.</p>
+</div>
+</div>
+</section>
+
+<!-- FUTURE AVIATION -->
+<section>
+<h2>Future Aviation</h2>
+<div class="cards">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1581090700227-d8a13140cd9c" alt="Electric Plane">
+<h3>Electric Aircraft</h3>
+<p>The next step in sustainable flight, quiet and efficient for the skies of tomorrow.</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1572449043415-72b9c9e3b0df" alt="Supersonic Jet">
+<h3>Supersonic Travel</h3>
+<p>Bringing speed back to the skies — faster than ever across continents.</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1611262580187-d66f5dc12d6d" alt="Drone">
+<h3>Drones & UAVs</h3>
+<p>Autonomous flight, reconnaissance, and new technologies reshaping air power.</p>
+</div>
+</div>
+</section>
+
+<!-- NEWS -->
+<section>
+<h2>Latest Aviation News</h2>
+<div id="news">Loading aviation news...</div>
+</section>
+
+<!-- ABOUT -->
+<section>
+<div class="about">
+<h2>About</h2>
+<p>I’m EFAD. Aviation isn’t just a hobby — it’s the ultimate fascination with speed, engineering, and the thrill of the skies.</p>
+</div>
+</section>
+
+<footer>
+© 2026 Aviation Hub — Built for the Sky ✈️
+</footer>
+
+<!-- NEWS SCRIPT -->
+<script>
+const newsContainer = document.getElementById("news");
+const API_KEY = "a8fc3cded1aacad59a4a502405f8758d"; // 
+const url = `https://gnews.io/api/v4/search?q=aviation&lang=en&max=5&apikey=${API_KEY}`;
+
+fetch(url)
+.then(res => res.json())
+.then(data => {
+newsContainer.innerHTML = "";
+data.articles.forEach(article => {
+const div = document.createElement("div");
+div.className = "news-card";
+div.innerHTML = `
+<a href="${article.url}" target="_blank">${article.title}</a>
+<p>${article.description || ""}</p>
+`;
+newsContainer.appendChild(div);
+});
+})
+.catch(() => {
+newsContainer.innerHTML = "Unable to load news.";
+});
+</script>
+
+</body>
+</html>
