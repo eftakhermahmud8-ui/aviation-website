@@ -1,234 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Aviation Hub</title>
 
 <style>
-:root {
---bg: #070b16;
---card: #0f162a;
---accent: #6ea8ff;
---text: #eaeaf0;
---muted: #9aa4c7;
+:root{
+--bg:#050814;
+--card:#0e162d;
+--accent:#6ea8ff;
+--text:#eaeaf0;
+--muted:#9aa4c7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:system-ui,-apple-system,Segoe UI,Roboto;
+background:linear-gradient(180deg,#050814,#0b1328);
+color:var(--text);
 }
 
-* { box-sizing: border-box; margin:0; padding:0; }
-
-body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-background: var(--bg);
-color: var(--text);
-scroll-behavior: smooth;
+nav{
+position:sticky;top:0;z-index:10;
+background:rgba(5,8,20,.9);
+backdrop-filter:blur(8px);
+display:flex;gap:18px;justify-content:center;
+padding:14px 10px;border-bottom:1px solid #111a3a;
 }
+nav a{color:var(--muted);text-decoration:none;font-weight:600}
+nav a:hover{color:var(--accent)}
 
-/* ===== HERO ===== */
-.hero {
-min-height: 100svh;
-display: flex;
-align-items: flex-end;
-justify-content: center;
-text-align: center;
-padding: 24px;
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:24px;
 background:
-linear-gradient(to top, rgba(7,11,22,0.95), rgba(7,11,22,0.4)),
-url("https://images.unsplash.com/photo-1504198458649-3128b932f49b");
-background-size: cover;
-background-position: center;
+linear-gradient(to top,rgba(5,8,20,.95),rgba(5,8,20,.4)),
+radial-gradient(circle at top,#1a2550,#050814);
+}
+.hero h1{
+font-size:clamp(2.5rem,9vw,4.5rem);
+letter-spacing:.2em;
+}
+.hero p{margin-top:16px;color:var(--muted);max-width:700px}
+
+section{padding:110px 20px}
+section h2{letter-spacing:.12em;margin-bottom:30px;text-align:center}
+
+.cards{display:grid;gap:22px}
+.card{
+background:linear-gradient(145deg,#101a38,#0b1326);
+border-radius:18px;
+padding:22px;
+box-shadow:0 20px 40px rgba(0,0,0,.45);
+cursor:pointer;
+transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 30px 60px rgba(0,0,0,.6);
+}
+.card img{width:100%;border-radius:14px;margin-bottom:14px}
+.card h3{color:var(--accent);margin-bottom:8px}
+.card p{color:var(--muted);line-height:1.6}
+
+.specs{margin-top:10px;font-size:.9rem;color:#cbd3ff}
+.specs span{display:block}
+
+.news{
+max-width:900px;margin:0 auto 22px;
+border-left:3px solid var(--accent);
+padding-left:16px;
+cursor:pointer
+}
+.news:hover{color:var(--accent)}
+.news p{color:var(--muted)}
+
+footer{text-align:center;padding:40px;color:#777}
+
+@media(min-width:768px){
+section{padding:120px 12%}
+.cards{grid-template-columns:repeat(3,1fr)}
 }
 
-.hero h1 {
-font-size: clamp(2.4rem, 8vw, 3.8rem);
-letter-spacing: 0.12em;
-margin-bottom: 16px;
-animation: fadeUp 1s ease forwards;
+/* REAL FLYING AIRCRAFT IMAGES */
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:4}
+.flyer{
+position:absolute;left:-220px;
+width:200px;opacity:.85
 }
-
-.hero p {
-font-size: 1rem;
-color: var(--muted);
-max-width: 600px;
-margin: auto;
-line-height: 1.6;
-animation: fadeUp 1.2s ease forwards;
+.flyer img{width:100%;filter:drop-shadow(0 8px 16px rgba(0,0,0,.6))}
+.trail{
+position:absolute;left:-220px;top:50%;height:8px;width:220px;
+background:linear-gradient(90deg,rgba(255,255,255,.6),rgba(255,255,255,0));
+filter:blur(4px)
 }
-
-/* ===== SECTIONS ===== */
-section { padding: 60px 20px; }
-section h2 { font-size: 1.8rem; margin-bottom: 24px; letter-spacing: 0.08em; }
-
-/* ===== CARDS ===== */
-.cards { display: grid; gap: 18px; }
-.card {
-background: linear-gradient(145deg, #111a33, #0c1326);
-padding: 18px;
-border-radius: 16px;
-box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-transform: translateY(20px);
-opacity: 0;
-animation: fadeUp 0.8s ease forwards;
-}
-.card img {
-width: 100%;
-border-radius: 12px;
-margin-bottom: 12px;
-}
-.card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.2rem; }
-.card p { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
-
-/* ===== NEWS ===== */
-.news-card {
-background: var(--card);
-padding: 16px;
-border-radius: 14px;
-margin-bottom: 16px;
-border-left: 3px solid var(--accent);
-animation: fadeUp 0.8s ease forwards;
-}
-.news-card a { color: var(--accent); font-weight: 600; text-decoration: none; display: block; margin-bottom: 6px; }
-.news-card p { color: var(--muted); font-size: 0.9rem; }
-
-/* ===== ABOUT ===== */
-.about {
-background: radial-gradient(circle at top, #111a33, #070b16);
-border-radius: 22px;
-padding: 32px;
-line-height: 1.6;
-}
-
-footer { text-align: center; padding: 32px 16px; color: #777; font-size: 0.85rem; }
-
-/* ===== DESKTOP ===== */
-@media (min-width: 768px) {
-section { padding: 90px 12%; }
-.cards { grid-template-columns: repeat(3,1fr); }
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeUp {
-from { opacity:0; transform:translateY(30px); }
-to { opacity:1; transform:translateY(0); }
+@keyframes fly{
+from{transform:translateX(-30vw) translateY(var(--y))}
+to{transform:translateX(140vw) translateY(calc(var(--y) - 12vh))}
 }
 </style>
 </head>
+
 <body>
 
-<!-- HERO -->
+<nav>
+<a href="#civil">Civil Aviation</a>
+<a href="#fighters">Fighter Jets</a>
+<a href="#airports">Airports</a>
+<a href="#future">Future</a>
+<a href="#news">News</a>
+</nav>
+
 <div class="hero">
 <div>
-<h1>Aviation Hub</h1>
-<p>Explore the thrill of the skies — from commercial airliners to fighter jets, airports, and future flight.</p>
+<h1>AVIATION HUB</h1>
+<p>Commercial airliners, fighter jets, airports, and the future of flight.</p>
 </div>
 </div>
 
-<!-- CIVIL AVIATION -->
-<section>
-<h2>Civil Aviation</h2>
+<section id="civil">
+<h2>CIVIL AVIATION</h2>
 <div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1549924231-f129b911e442" alt="Commercial Aircraft">
-<h3>Commercial Jets</h3>
-<p>Airbus, Boeing, short-haul and ultra long-haul airliners connecting the world.</p>
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Airbus_A350'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Airbus_A350-941_F-WXWB_MSN002_%2821389500939%29.jpg">
+<h3>Airbus A350</h3>
+<p>Long-range wide-body airliner built for efficiency and comfort.</p>
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1523726491678-bf852e717f10" alt="Airline">
-<h3>Airlines</h3>
-<p>Fleet details, liveries, and airline innovations shaping global aviation.</p>
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Boeing_787'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Boeing_787-9_%28N1015B%29_landing_at_LAX.jpg">
+<h3>Boeing 787 Dreamliner</h3>
+<p>Composite-based aircraft redefining long-haul efficiency.</p>
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a" alt="Airport">
-<h3>Airports</h3>
-<p>Major hubs, runways, and terminal operations that keep the skies safe.</p>
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Airbus_A320_family'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Airbus_A320-214_Lufthansa_D-AIZW.jpg">
+<h3>Airbus A320 Family</h3>
+<p>Most widely used short–medium haul aircraft worldwide.</p>
 </div>
 </div>
 </section>
 
-<!-- FIGHTER JETS -->
-<section>
-<h2>Fighter Jets</h2>
+<section id="fighters">
+<h2>FIGHTER JETS</h2>
 <div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1605950457645-91c3d348d2cf" alt="F-22 Raptor">
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Lockheed_Martin_F-22_Raptor'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/F-22_Raptor_-_RIAT_2010_%285%29.jpg">
 <h3>F-22 Raptor</h3>
-<p>Stealth and dominance in modern aerial combat, unmatched agility and power.</p>
+<p>Stealth air-superiority fighter with unmatched performance.</p>
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1553524848-3f1e1de9603c" alt="F-16 Fighting Falcon">
-<h3>F-16 Fighting Falcon</h3>
-<p>Legendary multirole fighter used by dozens of nations worldwide.</p>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1580053543010-1a3c0b31e187" alt="Su-57">
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Sukhoi_Su-57'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Sukhoi_Su-57_MAKS-2019_%28cropped%29.jpg">
 <h3>Su-57</h3>
-<p>Next-gen Russian stealth fighter combining speed, agility, and advanced tech.</p>
+<p>Russian fifth-generation stealth multirole fighter.</p>
+</div>
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/General_Dynamics_F-16_Fighting_Falcon'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/F-16_June_2008.jpg">
+<h3>F-16 Fighting Falcon</h3>
+<p>Legendary multirole jet flown by over 25 nations.</p>
 </div>
 </div>
 </section>
 
-<!-- FUTURE AVIATION -->
-<section>
-<h2>Future Aviation</h2>
+<section id="airports">
+<h2>AIRPORTS</h2>
 <div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1581090700227-d8a13140cd9c" alt="Electric Plane">
-<h3>Electric Aircraft</h3>
-<p>The next step in sustainable flight, quiet and efficient for the skies of tomorrow.</p>
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Hartsfield%E2%80%93Jackson_Atlanta_International_Airport'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Hartsfield%E2%80%93Jackson_Atlanta_International_Airport_aerial.jpg">
+<h3>Atlanta (ATL)</h3>
+<p>World’s busiest airport by passenger traffic.</p>
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1572449043415-72b9c9e3b0df" alt="Supersonic Jet">
-<h3>Supersonic Travel</h3>
-<p>Bringing speed back to the skies — faster than ever across continents.</p>
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Dubai_International_Airport'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Dubai_International_Airport_Aerial_View.jpg">
+<h3>Dubai (DXB)</h3>
+<p>Global long-haul super hub.</p>
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1611262580187-d66f5dc12d6d" alt="Drone">
-<h3>Drones & UAVs</h3>
-<p>Autonomous flight, reconnaissance, and new technologies reshaping air power.</p>
+<div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Heathrow_Airport'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Heathrow_Airport_T5_Aerial.jpg">
+<h3>London Heathrow</h3>
+<p>Europe’s busiest international airport.</p>
 </div>
-</div>
-</section>
-
-<!-- NEWS -->
-<section>
-<h2>Latest Aviation News</h2>
-<div id="news">Loading aviation news...</div>
-</section>
-
-<!-- ABOUT -->
-<section>
-<div class="about">
-<h2>About</h2>
-<p>I’m EFAD. Aviation isn’t just a hobby — it’s the ultimate fascination with speed, engineering, and the thrill of the skies.</p>
 </div>
 </section>
 
-<footer>
-© 2026 Aviation Hub — Built for the Sky ✈️
-</footer>
+<section id="future">
+<h2>FUTURE OF AVIATION</h2>
+<div class="cards">
+<div class="card"><h3>Supersonic Return</h3><p>Quieter, faster-than-sound commercial travel.</p></div>
+<div class="card"><h3>Electric Aircraft</h3><p>Lower emissions and sustainable flight.</p></div>
+<div class="card"><h3>6th-Gen Fighters</h3><p>AI-assisted combat and loyal wingman drones.</p></div>
+</div>
+</section>
 
-<!-- NEWS SCRIPT -->
+<section id="news">
+<h2>AVIATION NEWS</h2>
+<div class="news" onclick="location.href='https://www.flightglobal.com/'">
+<strong>Global fighter jet programs accelerate</strong>
+<p>Air forces invest heavily in next-generation aircraft.</p>
+</div>
+<div class="news" onclick="location.href='https://www.airwaysmag.com/'">
+<strong>Passenger traffic hits record highs</strong>
+<p>Demand surpasses pre-pandemic levels.</p>
+</div>
+</section>
+
+<footer>© 2026 Aviation Hub ✈️ Built by EFAD</footer>
+
+<div id="sky"></div>
 <script>
-const newsContainer = document.getElementById("news");
-const API_KEY = "a8fc3cded1aacad59a4a502405f8758d"; // 
-const url = `https://gnews.io/api/v4/search?q=aviation&lang=en&max=5&apikey=${API_KEY}`;
-
-fetch(url)
-.then(res => res.json())
-.then(data => {
-newsContainer.innerHTML = "";
-data.articles.forEach(article => {
-const div = document.createElement("div");
-div.className = "news-card";
-div.innerHTML = `
-<a href="${article.url}" target="_blank">${article.title}</a>
-<p>${article.description || ""}</p>
-`;
-newsContainer.appendChild(div);
-});
-})
-.catch(() => {
-newsContainer.innerHTML = "Unable to load news.";
-});
+const planes=[
+'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/F-16_silhouette.svg/512px-F-16_silhouette.svg.png',
+'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Airliner_silhouette.svg/512px-Airliner_silhouette.svg.png'
+];
+function spawn(){
+const f=document.createElement('div');
+f.className='flyer';
+f.style.setProperty('--y',Math.random()*60+'vh');
+const d=12+Math.random()*10;
+f.style.animation=`fly ${d}s linear forwards`;
+f.innerHTML=`<img src="${planes[Math.floor(Math.random()*planes.length)]}"><div class="trail"></div>`;
+document.getElementById('sky').appendChild(f);
+setTimeout(()=>f.remove(),(d+1)*1000);
+}
+setInterval(spawn,5000);
 </script>
 
 </body>
