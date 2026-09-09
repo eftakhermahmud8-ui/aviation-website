@@ -14,6 +14,24 @@ background:linear-gradient(180deg,#050814,#0b1328);
 color:var(--text);
 }
 
+#three-background{
+position:fixed;
+inset:0;
+z-index:1;
+pointer-events:none;
+}
+
+.three-background-canvas{
+display:block;
+width:100%;
+height:100%;
+}
+
+body > :not(#three-background){
+position:relative;
+z-index:2;
+}
+
 nav{
 position:sticky;top:0;z-index:10;
 background:rgba(5,8,20,.9);
@@ -31,9 +49,6 @@ align-items:center;
 justify-content:center;
 text-align:center;
 padding:24px;
-background:
-linear-gradient(to top,rgba(5,8,20,.95),rgba(5,8,20,.4)),
-radial-gradient(circle at top,#1a2550,#050814);
 }
 .hero h1{
 font-size:clamp(2.5rem,9vw,4.5rem);
@@ -49,7 +64,7 @@ section h2{letter-spacing:.12em;margin-bottom:30px;text-align:center}
 background:linear-gradient(145deg,#101a38,#0b1326);
 border-radius:18px;
 padding:22px;
-box-shadow:0 20px 40px rgba(0,0,0,.45);
+box-shadow:0 20px 40px rgba(147, 147, 144, 0.45);
 cursor:pointer;
 transition:transform .25s ease, box-shadow .25s ease;
 }

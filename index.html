@@ -7,9 +7,19 @@
 <title>Aviation Hub</title>
 
 <link rel="stylesheet" href="style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
 </head>
 
 <body>
+
+<div id="three-background" aria-hidden="true"></div>
 
 <nav>
 <a href="#civil">Civil Aviation</a>
@@ -30,7 +40,7 @@
 <h2>CIVIL AVIATION</h2>
 <div class="cards">
 <div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Airbus_A350'">
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Airbus_A350-941_F-WXWB_MSN002_%2821389500939%29.jpg">
+<img src="asset/Airbus_A350.jpg">
 <h3>Airbus A350</h3>
 <p>Long-range wide-body airliner built for efficiency and comfort.</p>
 </div>
@@ -40,7 +50,7 @@
 <p>Composite-based aircraft redefining long-haul efficiency.</p>
 </div>
 <div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Airbus_A320_family'">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Airbus_A320-214_Lufthansa_D-AIZW.jpg">
+<img src="asset/Airbus_A320.jpg">
 <h3>Airbus A320 Family</h3>
 <p>Most widely used short–medium haul aircraft worldwide.</p>
 </div>
@@ -51,17 +61,17 @@
 <h2>FIGHTER JETS</h2>
 <div class="cards">
 <div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Lockheed_Martin_F-22_Raptor'">
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/F-22_Raptor_-_RIAT_2010_%285%29.jpg">
+<img src="asset/F-22.jpg">
 <h3>F-22 Raptor</h3>
 <p>Stealth air-superiority fighter with unmatched performance.</p>
 </div>
 <div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Sukhoi_Su-57'">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Sukhoi_Su-57_MAKS-2019_%28cropped%29.jpg">
+<img src="asset/Su-57.jpg">
 <h3>Su-57</h3>
 <p>Russian fifth-generation stealth multirole fighter.</p>
 </div>
 <div class="card" onclick="location.href='https://en.wikipedia.org/wiki/General_Dynamics_F-16_Fighting_Falcon'">
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/F-16_June_2008.jpg">
+<img src="asset/F-16.jpg">
 <h3>F-16 Fighting Falcon</h3>
 <p>Legendary multirole jet flown by over 25 nations.</p>
 </div>
@@ -72,17 +82,17 @@
 <h2>AIRPORTS</h2>
 <div class="cards">
 <div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Hartsfield%E2%80%93Jackson_Atlanta_International_Airport'">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Hartsfield%E2%80%93Jackson_Atlanta_International_Airport_aerial.jpg">
+<img src="asset/Hartsfield2026.jpg">
 <h3>Atlanta (ATL)</h3>
 <p>World’s busiest airport by passenger traffic.</p>
 </div>
 <div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Dubai_International_Airport'">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Dubai_International_Airport_Aerial_View.jpg">
+<img src="asset/ISS-65_Dubai_International_Airport_and_Dubai.jpg">
 <h3>Dubai (DXB)</h3>
 <p>Global long-haul super hub.</p>
 </div>
 <div class="card" onclick="location.href='https://en.wikipedia.org/wiki/Heathrow_Airport'">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Heathrow_Airport_T5_Aerial.jpg">
+<img src="asset/London_Heathrow.jpg">
 <h3>London Heathrow</h3>
 <p>Europe’s busiest international airport.</p>
 </div>
@@ -113,23 +123,7 @@
 <footer>© 2026 Aviation Hub ✈️ Built by EFAD</footer>
 
 <div id="sky"></div>
-<script>
-const planes=[
-'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/F-16_silhouette.svg/512px-F-16_silhouette.svg.png',
-'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Airliner_silhouette.svg/512px-Airliner_silhouette.svg.png'
-];
-function spawn(){
-const f=document.createElement('div');
-f.className='flyer';
-f.style.setProperty('--y',Math.random()*60+'vh');
-const d=12+Math.random()*10;
-f.style.animation=`fly ${d}s linear forwards`;
-f.innerHTML=`<img src="${planes[Math.floor(Math.random()*planes.length)]}"><div class="trail"></div>`;
-document.getElementById('sky').appendChild(f);
-setTimeout(()=>f.remove(),(d+1)*1000);
-}
-setInterval(spawn,5000);
-</script>
+<script type="module" src="main.js"></script>
 
 </body>
 </html>
